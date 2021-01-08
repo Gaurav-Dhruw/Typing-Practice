@@ -1,0 +1,45 @@
+.{
+    background-color:grey;
+}
+
+.selected{
+    border: 1px rgb(0, 119, 255) solid;
+}
+
+.wrong{
+     
+    background-color:  rgba(255, 0, 0, 0.308);
+}
+
+.right{
+    color: rgb(0, 119, 255);
+}
+
+
+span{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Source Code Pro', monospace, Courier;
+    font-size: 12pt;
+    line-height: 2em;
+    letter-spacing: 0.09em;
+    min-width: 2px;
+}
+
+.space{
+    padding:0px 5px;
+    margin: 0px;
+    font-family: 'Source Code Pro', monospace, Courier;
+    font-size: 12pt;
+    line-height: 2em;
+    letter-spacing: 0.09em;
+    min-width: 2px;
+}
+textarea{
+    /* position: absolute;
+    left: 1%;
+    resize: none;
+    width: 80%; */
+    
+    opacity: 0.5;
+}
