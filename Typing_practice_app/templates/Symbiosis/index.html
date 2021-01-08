@@ -11,19 +11,37 @@
 
 </head>
 <body>
-    <h1 style="text-align:center">Hi this is a typing practicing website</h1>
-    <div id="container">
-        <button id="restartbtn">Restart</button>
-        <textarea name="txt" id="" cols="30" rows="10">are</textarea>
-        <hr>
-    </div>
-    <hr>
 
-    <div>
+    <nav id="navbar">
+        <ul>
+            <li id="sitename">Typing Practice</li>
+            <li id="about" class="navbtn">About Us</li>
+            <li id="goback" class="navbtn">Go Back</li>
+        </ul>
+    </nav>
+    <section id="parentcontainer1">
+        <div id="container" class="same">
+            <div id="txtcont"><textarea name="txt">are</textarea></div>
+            <div id='lettercont'></div>
 
-        <!-- <h6 id="jsaa">JSAA </h6> -->
-        <!-- <h1 id="iso">ISO </h1> -->
-    </div>
+        </div>
+    </section>
+
+    <section id="parentcontainer2">
+        <div id="display"><button id="restartbtn" class="utilitybtn">Restart &#10227</button>
+            <button id="nxtpara"  class="utilitybtn">Next Paragraph</button>
+        </div>
+    </section>
+
+    <section id="aboutus">
+        <div class="same">
+            <div id="aboutcont">
+
+            </div>
+
+        </div>
+
+    </section>
 
     <script>
         // document.getElementById('jsaa').innerHTML += "{{ stringy }}"
