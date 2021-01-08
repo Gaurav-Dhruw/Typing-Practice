@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '@4n_@6y&f8d#9y7ueai(d&&+fw79yygj8i)9u9e#$$l72wegp-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['typing-practice-app.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -77,13 +77,23 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
+
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'typing-practice-DB',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'ManishPort',
+        # 'HOST': 'localhost',
+
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'typing-practice-DB',
-        'USER': 'postgres',
-        'PASSWORD': 'ManishPort',
-        'HOST': 'localhost',
+        'NAME' : 'eyjzeokyffwycd',
+        'USER' : 'd38s271etd3k14',
+        'PASSWORD' : '76b0b48bd4c52ae6698e23b96b5ade4278b7bcb5e81931eb170f834442f918f9',
+        'HOST' : 'ec2-3-216-181-219.compute-1.amazonaws.com',
+        'PORT' : '5432'
     }
 }
+# postgres://eyjzeokyffwycd:76b0b48bd4c52ae6698e23b96b5ade4278b7bcb5e81931eb170f834442f918f9@ec2-3-216-181-219.compute-1.amazonaws.com:5432/d38s271etd3k14
 
 
 # Password validation
@@ -121,6 +131,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
