@@ -29,7 +29,7 @@
 
     <section id="parentcontainer2">
         <div id="display"><button id="restartbtn" class="utilitybtn">Restart &#10227</button>
-            <button id="nxtpara"  class="utilitybtn">Next Paragraph</button>
+            <a href="{% url 'rendertypingPage' %}"><button id="nxtpara"  class="utilitybtn">Next_Paragraph</button></a>
         </div>
     </section>
 
@@ -43,22 +43,107 @@
 
     </section>
 
-    <script>
+    <hr>
+
+
+    <!-- <div>
+        {% for quote in qu %}
+            <h2>{{quote.quote_text}}</h2>
+        {% endfor %}
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div>
+        {% for quote in quotes_DB %}
+            <h2>{{quote.quote_text}}</h2>
+        {% endfor %}
+    </div> -->
+
+
+
+    <script type="text/javascript">
         // document.getElementById('jsaa').innerHTML += "{{ stringy }}"
 
-        let data_from_python = JSON.parse("{{ stringy|escapejs }}"); 
-        let para;
+
+
+
+        // let data_from_python = [];
+        // let para = '{{quote_text}}'
+        // console.log(para)
+        // {% for quote in quote_text %}
+        //     data_from_python = '{{quote}';
+        //     para += '{{quote}';
+        //     console.log(data_from_python);
+        //     console.log(para);
+        // {% endfor %}
+
+ 
+
+
+
+
+
+
+        // let data_from_python = [];
+
+        let para = '';
+        {% for quote in quotes_DB %}
+            // data_from_python = '{{quote.quote_text}}';
+            para = '{{quote.quote_text}}';
+            // console.log(data_from_python)
+            // console.log(para)
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Second -- Working well */
+        // let data_from_python = [];
+        // let para = ''
+        // {% for quote in quotes_DB %}
+        //     data_from_python = '{{quote.quote_text}}';
+        //     para += '{{quote.quote_text}}';
+        //     console.log(data_from_python)
+        // {% endfor %}
+
+ 
+
+
+
+
+
+
+        /* ___________________________________ */
+        /* For Normal text */
+
+        // let data_from_python = JSON.parse("{{stringy|escapejs}}"); 
+        // console.log(data_from_python);
+        // let para = '';
         // for (let i in data_from_python){
-        //     para += data_from_python[i];
+        //     para += data_from_python['typeThis'];
         // }
-        console.log(data_from_python['typeThis'])
-        console.log(data_from_python['listy'])
-
-        para = data_from_python['typeThis']
-        // document.getElementById('iso').innerText += para;
+        // console.log(para)
+        // console.log(data_from_python['typeThis'])
 
 
-        // document.getElementById('jsaa').textContent = 'Ina mina dika';
+
     </script>
 </body>
 </html>
