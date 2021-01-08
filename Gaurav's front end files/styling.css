@@ -1,10 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    
+    
    
 }
 nav{
-    background-color: rgb(155, 109, 197);
+    background-color: rgba(155, 109, 197, 0.904);
     padding: 8px;
 }
 
@@ -17,18 +19,26 @@ ul{display: flex;
 #sitename{
     font-size: 3rem;
     position: relative;
-    left:8%
+    left:8%;
+    font-family: 'Tenor Sans', sans-serif;
 }
 
 .navbtn{
+    
+    width: 80px;
+    text-align: center;
     cursor: pointer;
     padding: 1px 8px;
     font-size: 1.2rem;
     position: absolute;
     right:10%;
-    border: 2px white solid;
+    border: 2px rgb(209, 199, 245) solid;
     border-radius: 11px;
-    background-color: rgb(175, 207, 187);
+    background-color: rgb(181 183 212);
+}
+
+.navbtn:hover{
+    background-color: rgb(147 152 224);
 }
 #goback{
     display: none;
@@ -46,7 +56,7 @@ ul{display: flex;
 }
 #parentcontainer2{
     margin :0% 18%;
-    margin-bottom: 2%;
+    /* margin-bottom: 2%; */
     
     padding: 8px;
 
@@ -69,40 +79,19 @@ ul{display: flex;
     
     
 }
-.selected{
-    border: 1px rgb(0, 119, 255) solid;
-}
 
-.wrong{
-     
-    background-color:  rgba(255, 0, 0, 0.308);
-}
 
-.right{
-    color: rgb(0, 119, 255);
-}
+#txtcont{
+    position: absolute;
+    display: flexbox;
+    width: 60%;
+    
+    min-height: 15vh;
+    
 
-span{
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Source Code Pro', monospace, Courier;
-    font-size: 1.1rem;
-    line-height: 2em;
-    letter-spacing: 0.09em;
-    min-width: 2px;
-}
-
-.space{
-    padding:0px 5px;
-    margin: 0px;
-    font-family: 'Source Code Pro', monospace, Courier;
-    font-size: 1.1rem;
-    line-height: 2em;
-    letter-spacing: 0.09em;
-    min-width: 2px;
 }
 textarea{
-    z-index: 0;
+    z-index: 1;
     
     /* left: 1%; */
     resize: none;
@@ -112,6 +101,64 @@ textarea{
     opacity: 0;
 }
 
+#lettercont{
+    z-index: -1;
+    width: 100%;
+    min-height: 15vh;
+    
+}
+
+/* #aboutcont>  */
+span{
+    
+    font-family: 'Source Code Pro', monospace, Courier;
+    font-size: 1.1rem;
+    line-height: 2em;
+    letter-spacing: 0.03em; 
+    border: white 1px solid;
+    
+      
+}
+
+span > span{
+    
+    font-family: 'Source Code Pro', monospace, Courier;
+    font-size: 1.1rem;
+    line-height: 2em;
+    letter-spacing: 0.03em; 
+    border: white 1px solid;
+}
+
+.space{
+    
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    width: 10px;
+    height:21px ;
+    line-height: 21px;
+    
+   
+}
+
+.selected{
+    
+    
+    border: 1px rgb(0, 119, 255) solid;
+   
+}
+
+.wrong{
+     
+    background-color:  rgba(255, 0, 0, 0.308);
+    border:1px solid rgb(255 176 176); ;
+}
+
+.right{
+    color: rgb(0, 119, 255);
+}
+
+
 .utilitybtn{
     font-size: 1.05rem;
     margin: 2% 1%;
@@ -119,9 +166,9 @@ textarea{
 
     
     padding: 2px 8px;
-    border: rgb(112, 167, 212) solid 2px;
+    border: rgb(155, 192, 223) solid 2px;
     border-radius: 8px;
-    
+    background-color:rgb(155, 192, 223);
     transition: 0.1;
     outline: none;
     
@@ -131,9 +178,9 @@ textarea{
     
     
     padding: 2px 8px;
-    
+    border: rgb(68, 133, 185) solid 2px;
     color: rgb(255, 255, 255);
-    background-color:rgb(112, 167, 212);
+    background-color:rgb(68, 133, 185);
     border-radius: 8px;
     /* transform: scale(1.05); */
     cursor: pointer;
@@ -148,30 +195,28 @@ textarea{
     margin :0% 16%;
     
     padding: 8px;
-    padding-top: 20px;
-
+    
+    font-family: 'Tenor Sans', sans-serif;
     display: flex;
     font-size: 1.4rem;
     justify-content: space-evenly;
     align-items: center;
-
-}
-#txtcont{
-    position: absolute;
-    display: flexbox;
-    width: 60%;
-    
-    min-height: 15vh;
-    
+    flex-wrap: wrap;
 
 }
 
-#lettercont{
-    
-    width: 100%;
-    min-height: 15vh;
-    
+#result>div{
+    margin:15px 5%;
+    padding: 8px 16px;
+    font-weight: bold;
+    border: rgb(163, 247, 208) 3px solid;
+    border-radius: 15px;
+    background-color: rgb(181, 243, 181);
+
+
 }
+
+
 
 #aboutus{
     display: none;
@@ -189,7 +234,7 @@ textarea{
 #aboutcont{
     width: 100%;
     min-height: 15vh;
-    height: 15vh;
+    
     
     
 }
@@ -206,3 +251,5 @@ textarea{
     height: 15vh;
 
 }
+
+   

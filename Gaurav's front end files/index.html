@@ -5,9 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Practice</title>
+    
+
     <link rel="stylesheet" href="styling.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        @media(max-width:600px) {
+            #sitename {
+                font-size: 1.8rem;
+                left: 2%
+            }
+
+            .navbtn {
+                width: 62px;
+                font-size: 1rem;
+                right: 6%;
+            }
+            #display{
+                padding: 0;
+                justify-content: center;
+            }
+            .utilitybtn{
+                margin: 2% 3%;
+    
+            }
+        }
+
+        @media(max-width:350px){
+            #sitename {
+                font-size: 1.7rem;
+            
+            }
+
+            
+        }
+    </style>
+    <script src="typing_practice.js" defer></script>
     <script src="interface.js" defer></script>
-    <script src="typing practice.js" defer></script>
+    
 </head>
 
 <body>
@@ -28,7 +64,7 @@
 
     <section id="parentcontainer2">
         <div id="display"><button id="restartbtn" class="utilitybtn">Restart &#10227</button>
-            <button id="nxtpara"  class="utilitybtn">Next Paragraph</button>
+            <button id="nxtpara" class="utilitybtn">Next Paragraph</button>
         </div>
     </section>
 

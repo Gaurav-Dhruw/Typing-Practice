@@ -34,7 +34,7 @@ about.addEventListener("click", () => {
             span.innerText = `|`;
             abtcont.appendChild(span);
             id2=setInterval(() => {
-                console.log("if");
+                
 
                 if (span.style.visibility == "visible")
                     span.style.visibility  = "hidden";
