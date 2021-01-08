@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/typing.css' %}">
+    <script src="{% static 'javascript/typing.js' %}" defer></script>
+</head>
+<body>
+    <h1 style="text-align:center">Hi this is a typing practicing website</h1>
+    <div id="container">
+        <button id="restartbtn">Restart</button>
+        <textarea name="txt" id="" cols="30" rows="10">are</textarea>
+        <hr>
+    </div>
+    <hr>
+
+    <div>
+        <!-- <h6 id="jsaa">JSAA </h6> -->
+        <!-- <h1 id="iso">ISO </h1> -->
+    </div>
+
+    <script>
+        // document.getElementById('jsaa').innerHTML += "{{ stringy }}"
+
+        let data_from_python = JSON.parse("{{ stringy|escapejs }}"); 
+        let para;
+        // for (let i in data_from_python){
+        //     para += data_from_python[i];
+        // }
+        console.log(data_from_python['typeThis'])
+        console.log(data_from_python['listy'])
+
+        para = data_from_python['typeThis']
+        // document.getElementById('iso').innerText += para;
+
+
+        // document.getElementById('jsaa').textContent = 'Ina mina dika';
+    </script>
+</body>
+</html>
