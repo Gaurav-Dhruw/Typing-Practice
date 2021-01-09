@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-import django_heroku
+# import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Typing_practice_app.urls'
@@ -82,18 +82,18 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
 
 
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'typing-practice-DB',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'ManishPort',
-        # 'HOST': 'localhost',
-
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'eyjzeokyffwycd',
-        'USER' : 'd38s271etd3k14',
-        'PASSWORD' : '76b0b48bd4c52ae6698e23b96b5ade4278b7bcb5e81931eb170f834442f918f9',
-        'HOST' : 'ec2-3-216-181-219.compute-1.amazonaws.com',
-        'PORT' : '5432'
+        'NAME': 'typing-practice-DB',
+        'USER': 'postgres',
+        'PASSWORD': 'ManishPort',
+        'HOST': 'localhost',
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME' : 'eyjzeokyffwycd',
+        # 'USER' : 'd38s271etd3k14',
+        # 'PASSWORD' : '76b0b48bd4c52ae6698e23b96b5ade4278b7bcb5e81931eb170f834442f918f9',
+        # 'HOST' : 'ec2-3-216-181-219.compute-1.amazonaws.com',
+        # 'PORT' : '5432'
     }
 }
 # postgres://eyjzeokyffwycd:76b0b48bd4c52ae6698e23b96b5ade4278b7bcb5e81931eb170f834442f918f9@ec2-3-216-181-219.compute-1.amazonaws.com:5432/d38s271etd3k14
@@ -138,7 +138,7 @@ USE_TZ = True
 
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
@@ -150,6 +150,3 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     # '/var/www/static/',
 ]
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
