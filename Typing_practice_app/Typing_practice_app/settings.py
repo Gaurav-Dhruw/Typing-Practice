@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Symbiosis'                                 ## The App name
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

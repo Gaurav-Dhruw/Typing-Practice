@@ -6,7 +6,7 @@ let totalwords, totalletters;
 window.addEventListener("load", function () {
     totalwords = Paragraph();
     txtarea.focus();
-    let selected = document.querySelector('span');
+    let selected = document.getElementById('1');
     selected.className = "selected";
 
 });
@@ -64,18 +64,27 @@ txtarea.addEventListener("keydown", function (event) {
                     }
 
 
-                    if (newselected.innerText === "") {
+                    if (newselected.innerText == " "||newselected.innerText == "") {
+                        
                         newselected.className = "space selected";
                     }
                     else {
                         newselected.className = "selected";
+                        
 
                     }
-                    if (selected.innerText === "") {
+                    if (selected.innerText == " "||selected.innerText == "") {
                         selected.className = "space";
+                        
+                        
+                        
                     }
                     else {
+                        
                         selected.className = "";
+                        
+
+                        
 
                     }
                     --i;
@@ -112,7 +121,7 @@ txtarea.addEventListener("keydown", function (event) {
 
 
                     let newselected = document.getElementById(`${i + 1}`);
-                    if (newselected.innerText === "") {
+                    if (newselected.innerText === ""||newselected.innerText === " ") {
                         newselected.className = "space selected";
                     }
                     else {
@@ -148,7 +157,7 @@ txtarea.addEventListener("keydown", function (event) {
                 }
 
                 // counting right and wrong typed letters and  changing the display according it
-                if (selected.innerText === "") {
+                if (selected.innerText === ""||selected.innerText === " ") {
 
                     if (key === " ") {
 
@@ -218,21 +227,48 @@ function speed(words, sec, milli) {
 // Function to put the Paragraph in DOM
 
 function Paragraph() {
-    // let para = "You only live once, but if you do it right, once is enough.";
+    // let para = "You only live once, but living it happily is enough for one life.";
 
     let letters = para.split("");
     let words = para.split(" ");
-
+    // let cnt = 1;
     container = document.querySelector('#lettercont');
     document.getElementById("txtcont").style.height = `${container.offsetHeight}px`;
     for (let iterator = 0; iterator < letters.length; iterator++) {
-        let alphanum = letters[iterator];
-
+        let alphanum = words[iterator];
+        // let l = alphanum.split("");
         let parentspan = document.createElement("span");
-        parentspan.id = `${iterator + 1}`;
-        parentspan.innerText = alphanum;
-        // container.innerHTML=container.innerHTML+`<span id ='${iterator+1}'>${alphanum}</span>`;
 
+        parentspan.innerText=letters[iterator];
+        parentspan.id=`${iterator+1}`;
+        if(letters[iterator]==""||letters[iterator]==""){
+            parentspan.className="space";
+        }
+        
+        // for (let j = 0; j < alphanum.length; j++) {
+            
+        //     let childspan=document.createElement("span");
+        //     childspan.innerText = l[j];
+        //     childspan.id=`${cnt}`;
+            
+        //     parentspan.appendChild(childspan);
+            
+        //     cnt++;
+            
+        //     if (j+1 == alphanum.length) {
+        //         let childspan=document.createElement("span");
+        //         childspan.innerText = " ";
+        //         childspan.id=`${cnt}`;
+        //         childspan.className="space";
+        //         parentspan.appendChild(childspan);
+                
+        //         cnt++;
+                
+        //     }
+           
+
+        // }
+        
         container.appendChild(parentspan);
 
 
@@ -242,7 +278,7 @@ function Paragraph() {
         if (document.getElementById("txtcont").style.height != `${container.offsetHeight}px`) {
             document.getElementById("txtcont").style.height = `${container.offsetHeight}px`;
         }
-        console.log(container.offsetHeight);
+        
 
     }, 500);
 
@@ -272,7 +308,7 @@ function Restart() {
 
     }
 
-    let selected = document.querySelector('span');
+    let selected = document.getElementById("1");
     selected.className = "selected";
 
     //to avoid error when element with result is not created 
@@ -284,6 +320,8 @@ function Restart() {
 // Restart trigger
 let restart = document.getElementById("restartbtn");
 restart.addEventListener("click", Restart);
+
+
 let id3;
 let focusouttrigger = true;
 // to check whether textarea is focused or not and makes changes to display accordingly
@@ -292,17 +330,13 @@ txtarea.addEventListener("focusout", () => {
         let selected = document.getElementById(`${i}`);
         selected.className = "";
 
-
-
-
     }
-
 
 });
 txtarea.addEventListener("focus", () => {
     let selected = document.getElementById(`${i}`);
     selected.className = "selected";
-    
+
 
 });
 

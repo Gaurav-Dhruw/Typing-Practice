@@ -9,6 +9,41 @@
     <script src="{% static 'javascript/typing.js' %}" defer></script>
     <script src="{% static 'javascript/interface.js' %}" defer></script>
 
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet"> 
+    <style> 
+        @media(max-width:600px) { 
+            #sitename { 
+                font-size: 1.8rem; 
+                left: 2% 
+            } 
+ 
+            .navbtn { 
+                width: 62px; 
+                font-size: 1rem; 
+                right: 6%; 
+            } 
+            #display{ 
+                padding: 0; 
+                justify-content: center; 
+            } 
+            .utilitybtn{ 
+                margin: 2% 3%; 
+     
+            } 
+        } 
+ 
+        @media(max-width:350px){ 
+            #sitename { 
+                font-size: 1.7rem; 
+             
+            } 
+ 
+             
+        } 
+    </style> 
+
 </head>
 <body>
 
@@ -29,7 +64,7 @@
 
     <section id="parentcontainer2">
         <div id="display"><button id="restartbtn" class="utilitybtn">Restart &#10227</button>
-            <a href="{% url 'rendertypingPage' %}"><button id="nxtpara"  class="utilitybtn">Next_Paragraph</button></a>
+            <a href="{% url 'rendertypingPage' %}"><button id="nxtpara" class="utilitybtn">Next_Paragraph</button></a>
         </div>
     </section>
 
