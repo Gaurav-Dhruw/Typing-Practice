@@ -1,3 +1,4 @@
+python
 aniso8601==7.0.0
 argon2-cffi==20.1.0
 asgiref==3.3.1
@@ -68,7 +69,6 @@ pylint==2.6.0
 pyparsing==2.4.7
 PyPDF2==1.26.0
 pyrsistent==0.17.3
-python
 python-dateutil==2.8.1
 python3-openid==3.2.0
 pytz==2020.4
