@@ -261,7 +261,7 @@ function Paragraph() {
     }
     // console.log(stringist)
 
-
+    stringist = stringist.slice(0, -1)                  // removing the last space
 
     // The para became stringist
 
