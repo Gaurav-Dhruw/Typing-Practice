@@ -1,5 +1,15 @@
-let container = document.getElementById("container");
+let container = document.getElementById("lettercont");
 let totalwords, totalletters;
+
+// Shift of the focus on textarea on load 
+
+window.addEventListener("load", function () {
+    totalwords = Paragraph();
+    txtarea.focus();
+    let selected = document.getElementById('1');
+    selected.className = "selected";
+
+});
 
 let i = 1; //used to track id and To Pass from one <span> element to other
 let rightcounter = 0, wrongcounter = 0;
@@ -9,171 +19,191 @@ let second = 0, millisecond = 0;
 
 
 let txtarea = document.querySelector("textarea");
-let pretxtarea = txtarea.value; // Solution for one of the initil textarea bug
+let pretxtarea = ""; // Solution for one of the initil textarea bug
 txtarea.value = "";// Solution for one of the initil textarea bug
 
 
 
 
-
-
-
-
-
-// Shift of the focus on textarea on load 
-
-window.addEventListener("load", function () {
-    totalwords = Paragraph();
-    txtarea.focus();
-    let selected = document.querySelector('span');
-    selected.className = "selected";
-
-});
-
 // Masala of the site, handles all the typing process
 
 txtarea.addEventListener("keydown", function (event) {
-   
-    if (txtarea.value != pretxtarea) {
-        let key = event.key;
 
-        // conditional statement for all the Backspace process. As its function is to erase the letters therefore it is kept seperate
-        if (key === "Backspace") {
-            
-            // used to stop the triggring of any activity by backspace when first letter is selected
-            if (i == 1) {
+    let key = event.key;
+
+    //  to exclude the Modifier and all the additional keys
+    if (key == "Alt" || key == "Tab" || key == "F1" || key == "F2" || key == "F3" || key == "F4" || key == "F6" || key == "F7" || key == "F8" || key == "F9" || key == "F10" || key == "F11") {
+        event.preventDefault();
+
+    }
+
+
+    setTimeout(() => {
+
+        if (txtarea.value != pretxtarea) {
+
+
+            // conditional statement for all the Backspace process. As its function is to erase the letters therefore it is kept seperate
+            if (key === "Backspace") {
+
+                // used to stop the triggring of any activity by backspace when first letter is selected
+                if (i == 1) {
+
+                }
+                else {
+
+                    let selected = document.getElementById(`${i}`);
+                    let newselected = document.getElementById(`${i - 1}`);
+
+                    if (newselected.className == "right space" || newselected.className == "right") {
+                        rightcounter--;
+                    }
+
+                    else {
+                        wrongcounter--;
+                    }
+
+
+                    if (newselected.innerText == " "||newselected.innerText == "") {
+                        
+                        newselected.className = "space selected";
+                    }
+                    else {
+                        newselected.className = "selected";
+                        
+
+                    }
+                    if (selected.innerText == " "||selected.innerText == "") {
+                        selected.className = "space";
+                        
+                        
+                        
+                    }
+                    else {
+                        
+                        selected.className = "";
+                        
+
+                        
+
+                    }
+                    --i;
+                    pretxtarea = txtarea.value;
+
+                }
 
             }
+
+
+            // triggers the timer, register and check the typed letters, counts the right and wrong typed letters, Displays the result
             else {
+                if (clockcounter == 0) {
+
+
+                    timecounter = setInterval(() => {
+                        if (millisecond == 1000) {
+                            second++;
+                            millisecond = 0
+                        }
+                        millisecond = millisecond + 100;
+
+                    }, 100);
+                    clockcounter++;
+
+                }
+
+
 
                 let selected = document.getElementById(`${i}`);
-                let newselected = document.getElementById(`${i - 1}`);
 
-                if (newselected.className == "right space" || newselected.className == "right") {
-                    rightcounter--;                   
-                }
-
-                else {
-                    wrongcounter--;                   
-                }
+                // To make changes to the last letter as newselected element doesn't exist
+                if (i < totalletters) {
 
 
-                if (newselected.innerText === "") {
-                    newselected.className = "space selected";
-                }
-                else {
-                    newselected.className = "selected";
-
-                }
-                if (selected.innerText === "") {
-                    selected.className = "space";
-                }
-                else {
-                    selected.className = "";
-
-                }
-                --i;
-                pretxtarea = txtarea.value;
-
-            }
-
-        }
-        // else if; to exclude the Modifier and all the additional keys
-        else if (event.getModifierState(key) || key == "CapsLock" || key == "ScrollLock" || key == "NumLock" || key == "Tab") {
-            
-        }
-        // triggers the timer, register and check the typed letters, counts the right and wrong typed letters, Displays the result
-        else {
-            if (clockcounter == 0) {
-
-
-                timecounter = setInterval(() => {
-                    if (millisecond == 1000) {
-                        second++;
-                        millisecond = 0
+                    let newselected = document.getElementById(`${i + 1}`);
+                    if (newselected.innerText === ""||newselected.innerText === " ") {
+                        newselected.className = "space selected";
                     }
-                    millisecond = millisecond + 100;
-                    
-                }, 100);
-                clockcounter++;
+                    else {
+                        newselected.className = "selected";
 
-            }
+                    }
+                    selected.className = "";
+                    ++i;
 
 
-    
-            let selected = document.getElementById(`${i}`);
-
-            // To make changes to the last letter as newselected element doesn't exist
-            if (i < totalletters) {
-
-                let newselected = document.getElementById(`${i + 1}`);
-                if (newselected.innerText === "") {
-                    newselected.className = "space selected";
                 }
+
+                // Trrigers The Results
                 else {
-                    newselected.className = "selected";
+                    focusouttrigger = false;
+                    clearInterval(timecounter);
+                    setTimeout(() => {
+                        let PercentageAccuracy = accuracy(rightcounter, wrongcounter) + "%";
+                        let WPM = speed(totalwords, second, millisecond);
+                        let result = document.createElement("div");
+                        result.id = "result";
 
+                        result.innerHTML = `
+                    <div>Mistakes: ${wrongcounter} </div>
+                    <div>Accuracy: ${PercentageAccuracy} </div>
+                    <div>WPM: ${WPM} </div>`;
+
+                        document.querySelector("body").appendChild(result);
+                        txtarea.style.display = "none";
+
+
+                    }, 1);
                 }
-                selected.className = "";
-                ++i;
-                
 
-            }
+                // counting right and wrong typed letters and  changing the display according it
+                if (selected.innerText === ""||selected.innerText === " ") {
 
-            // Trrigers The Results
-            else {
-                clearInterval(timecounter);
-                setTimeout(() => {
-                    let PercentageAccuracy = accuracy(rightcounter, wrongcounter) + "%";
-                    let WPM = speed(totalwords, second, millisecond);
-                    let result = document.createElement("div");
-                    result.id = "result";
+                    if (key === " ") {
 
-                    result.innerHTML = `<div>Right:${rightcounter} </div>
-                <div>Wrong:${wrongcounter} </div>
-                <div>Accuracy:${PercentageAccuracy} </div>
-                <div>WPM:${WPM} </div>`;
-
-                    document.querySelector("body").appendChild(result);
-                    txtarea.style.display = "none";
+                        selected.className = "right space";
+                        ++rightcounter;
 
 
-                }, 1);
-            }
+                    }
+                    else {
+                        selected.className = "wrong space";
+                        ++wrongcounter;
 
-            // counting right and wrong typed letters and  changing the display according it
-            if (selected.innerText === "") {
-                
-                if (key === " ") {
-                    
-                    selected.className = "right space";
-                    ++rightcounter;
-                    
-                }
-                else {
-                    selected.className = "wrong space";
-                    ++wrongcounter;
-                    
-                }
-            }
-           
-            else {
 
-                if (key == selected.innerText) {
-                    selected.className = "right";
-                    ++rightcounter;
-                    
+                    }
                 }
 
                 else {
-                    selected.className = "wrong";
-                    ++wrongcounter;
-                    
+
+                    if (key == selected.innerText) {
+                        selected.className = "right";
+                        ++rightcounter;
+
+
+                    }
+
+                    else {
+                        selected.className = "wrong";
+                        ++wrongcounter;
+
+
+                    }
                 }
+                pretxtarea = txtarea.value;
             }
-            pretxtarea = txtarea.value;
         }
-    }
+        //  to exclude the Modifier and all the additional keys
+        else {
+
+
+            event.preventDefault();
+        }
+
+    }, 1);
+
+
+
 });
 
 // Function to find accuracy
@@ -196,27 +226,103 @@ function speed(words, sec, milli) {
 
 // Function to put the Paragraph in DOM
 
-
-
 function Paragraph() {
-    
-    // let para = "This is a js variable"
+    // let para = "You only live once, but living it happily is enough for one life.";
 
-    let letters = para.split("");
+
+
+
+    
     let words = para.split(" ");
-    
-    container = document.querySelector('#container');
-    for (let iterator = 0; iterator < letters.length; iterator++) {
-        let alphanum = letters[iterator];
+    // console.log(words);
 
-        let parentspan = document.createElement("span");
-        parentspan.id = `${iterator + 1}`;
-        parentspan.innerText = alphanum;
-        // container.innerHTML=container.innerHTML+`<span id ='${iterator+1}'>${alphanum}</span>`;
+    let listy = [];
+    let i = 0;
 
-        container.appendChild(parentspan);
-        
+    for(i; i<words.length; i++){
+    if( words[i].slice(-7, -1) === "&#x27;" ){
+        listy.push(words[i].slice(0, -7) + "'" + words[i].slice(-1))
     }
+    else if( words[i].slice(-8, -2) === "&#x27;" ){
+        listy.push(words[i].slice(0, -8) + "'" + words[i].slice(-2))
+    }
+    else if( words[i].slice(-6) === "&#x27;" ){
+        listy.push(words[i].slice(0, -6) + "'")
+    }
+    else{
+        listy.push(words[i])
+    }
+    };
+    // console.log(listy)
+
+    stringist = "";
+    for(i=0; i<listy.length; i++){
+    stringist += listy[i] + " "
+    }
+    // console.log(stringist)
+
+    stringist = stringist.slice(0, -1)                  // removing the last space
+
+    // The para became stringist
+
+    let letters = stringist.split("");
+    
+
+
+
+
+
+    // let cnt = 1;
+    container = document.querySelector('#lettercont');
+    document.getElementById("txtcont").style.height = `${container.offsetHeight}px`;
+    for (let iterator = 0; iterator < letters.length; iterator++) {
+        let alphanum = words[iterator];
+        // let l = alphanum.split("");
+        let parentspan = document.createElement("span");
+
+        parentspan.innerText=letters[iterator];
+        parentspan.id=`${iterator+1}`;
+        if(letters[iterator]==""||letters[iterator]==""){
+            parentspan.className="space";
+        }
+        
+        // for (let j = 0; j < alphanum.length; j++) {
+            
+        //     let childspan=document.createElement("span");
+        //     childspan.innerText = l[j];
+        //     childspan.id=`${cnt}`;
+            
+        //     parentspan.appendChild(childspan);
+            
+        //     cnt++;
+            
+        //     if (j+1 == alphanum.length) {
+        //         let childspan=document.createElement("span");
+        //         childspan.innerText = " ";
+        //         childspan.id=`${cnt}`;
+        //         childspan.className="space";
+        //         parentspan.appendChild(childspan);
+                
+        //         cnt++;
+                
+        //     }
+           
+
+        // }
+        
+        container.appendChild(parentspan);
+
+
+    }
+
+    id3 = setInterval(() => {
+        if (document.getElementById("txtcont").style.height != `${container.offsetHeight}px`) {
+            document.getElementById("txtcont").style.height = `${container.offsetHeight}px`;
+        }
+        
+
+    }, 500);
+
     totalletters = letters.length;
 
     return words.length;
@@ -243,7 +349,7 @@ function Restart() {
 
     }
 
-    let selected = document.querySelector('span');
+    let selected = document.getElementById("1");
     selected.className = "selected";
 
     //to avoid error when element with result is not created 
@@ -257,15 +363,21 @@ let restart = document.getElementById("restartbtn");
 restart.addEventListener("click", Restart);
 
 
+let id3;
+let focusouttrigger = true;
 // to check whether textarea is focused or not and makes changes to display accordingly
 txtarea.addEventListener("focusout", () => {
-    let selected = document.getElementById(`${i}`);
-    selected.className = "";
+    if (i < totalletters || focusouttrigger) {
+        let selected = document.getElementById(`${i}`);
+        selected.className = "";
+
+    }
 
 });
 txtarea.addEventListener("focus", () => {
     let selected = document.getElementById(`${i}`);
     selected.className = "selected";
+
 
 });
 

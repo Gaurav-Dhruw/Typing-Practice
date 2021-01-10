@@ -7,37 +7,177 @@
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/typing.css' %}">
     <script src="{% static 'javascript/typing.js' %}" defer></script>
+    <script src="{% static 'javascript/interface.js' %}" defer></script>
+
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet"> 
+    <style> 
+        @media(max-width:600px) { 
+            #sitename { 
+                font-size: 1.8rem; 
+                left: 2% 
+            } 
+ 
+            .navbtn { 
+                width: 62px; 
+                font-size: 1rem; 
+                right: 6%; 
+            } 
+            #display{ 
+                padding: 0; 
+                justify-content: center; 
+            } 
+            .utilitybtn{ 
+                margin: 2% 3%; 
+     
+            } 
+        } 
+ 
+        @media(max-width:350px){ 
+            #sitename { 
+                font-size: 1.7rem; 
+             
+            } 
+ 
+             
+        } 
+    </style> 
+
 </head>
 <body>
-    <h1 style="text-align:center">Hi this is a typing practicing website</h1>
-    <div id="container">
-        <button id="restartbtn">Restart</button>
-        <textarea name="txt" id="" cols="30" rows="10">are</textarea>
-        <hr>
-    </div>
-    <hr>
 
-    <div>
-        <!-- <h6 id="jsaa">JSAA </h6> -->
-        <!-- <h1 id="iso">ISO </h1> -->
-    </div>
+    <nav id="navbar">
+        <ul>
+            <li id="sitename">Typing Practice</li>
+            <li id="about" class="navbtn">About Us</li>
+            <li id="goback" class="navbtn">Go Back</li>
+        </ul>
+    </nav>
+    <section id="parentcontainer1">
+        <div id="container" class="same">
+            <div id="txtcont"><textarea name="txt">are</textarea></div>
+            <div id='lettercont'></div>
 
-    <script>
+        </div>
+    </section>
+
+    <section id="parentcontainer2">
+        <div id="display"><button id="restartbtn" class="utilitybtn">Restart &#10227</button>
+            <a href="{% url 'rendertypingPage' %}"><button id="nxtpara" class="utilitybtn">Next_Paragraph</button></a>
+        </div>
+    </section>
+
+    <section id="aboutus">
+        <div class="same">
+            <div id="aboutcont">
+
+            </div>
+
+        </div>
+
+    </section>
+
+ 
+
+    <!-- <div>
+        {% for quote in qu %}
+            <h2>{{quote.quote_text}}</h2>
+        {% endfor %}
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div>
+        {% for quote in quotes_DB %}
+            <h2>{{quote.quote_text}}</h2>
+        {% endfor %}
+    </div> -->
+
+
+
+    <script type="text/javascript">
         // document.getElementById('jsaa').innerHTML += "{{ stringy }}"
 
-        let data_from_python = JSON.parse("{{ stringy|escapejs }}"); 
-        let para;
+
+
+
+        // let data_from_python = [];
+        // let para = '{{quote_text}}'
+        // console.log(para)
+        // {% for quote in quote_text %}
+        //     data_from_python = '{{quote}';
+        //     para += '{{quote}';
+        //     console.log(data_from_python);
+        //     console.log(para);
+        // {% endfor %}
+
+ 
+
+
+
+
+
+
+        // let data_from_python = [];
+
+        let para = '';
+        {% for quote in quotes_DB %}
+            // data_from_python = '{{quote.quote_text}}';
+            para = '{{quote.quote_text}}';
+            // console.log(data_from_python)
+            // console.log(para)
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Second -- Working well */
+        // let data_from_python = [];
+        // let para = ''
+        // {% for quote in quotes_DB %}
+        //     data_from_python = '{{quote.quote_text}}';
+        //     para += '{{quote.quote_text}}';
+        //     console.log(data_from_python)
+        // {% endfor %}
+
+ 
+
+
+
+
+
+
+        /* ___________________________________ */
+        /* For Normal text */
+
+        // let data_from_python = JSON.parse("{{stringy|escapejs}}"); 
+        // console.log(data_from_python);
+        // let para = '';
         // for (let i in data_from_python){
-        //     para += data_from_python[i];
+        //     para += data_from_python['typeThis'];
         // }
-        console.log(data_from_python['typeThis'])
-        console.log(data_from_python['listy'])
-
-        para = data_from_python['typeThis']
-        // document.getElementById('iso').innerText += para;
+        // console.log(para)
+        // console.log(data_from_python['typeThis'])
 
 
-        // document.getElementById('jsaa').textContent = 'Ina mina dika';
+
     </script>
 </body>
 </html>
