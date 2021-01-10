@@ -229,8 +229,49 @@ function speed(words, sec, milli) {
 function Paragraph() {
     // let para = "You only live once, but living it happily is enough for one life.";
 
-    let letters = para.split("");
+
+
+
+    
     let words = para.split(" ");
+    // console.log(words);
+
+    let listy = [];
+    let i = 0;
+
+    for(i; i<words.length; i++){
+    if( words[i].slice(-7, -1) === "&#x27;" ){
+        listy.push(words[i].slice(0, -7) + "'" + words[i].slice(-1))
+    }
+    else if( words[i].slice(-8, -2) === "&#x27;" ){
+        listy.push(words[i].slice(0, -8) + "'" + words[i].slice(-2))
+    }
+    else if( words[i].slice(-6) === "&#x27;" ){
+        listy.push(words[i].slice(0, -6) + "'")
+    }
+    else{
+        listy.push(words[i])
+    }
+    };
+    // console.log(listy)
+
+    stringist = "";
+    for(i=0; i<listy.length; i++){
+    stringist += listy[i] + " "
+    }
+    // console.log(stringist)
+
+
+
+    // The para became stringist
+
+    let letters = stringist.split("");
+    
+
+
+
+
+
     // let cnt = 1;
     container = document.querySelector('#lettercont');
     document.getElementById("txtcont").style.height = `${container.offsetHeight}px`;

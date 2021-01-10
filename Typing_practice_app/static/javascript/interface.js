@@ -3,7 +3,7 @@ let goback = document.getElementById("goback");
 
 let abtcont;
 let abtus=document.getElementById("aboutus");
-let aboutus = "This is the free real estate."
+let aboutus = "Hi there, this site is a small project done by two Students of NIT Raipur; namely D. Gopal Krishna and Gaurav Dhruw. We both love to practice touch typing so we decided to make a very site of our own. We kept the interface very simple and clean so that its easy for you to focus on your practice. So just Keep Practicing........"
 let letters = aboutus.split("");
 let counter = 0;
 
